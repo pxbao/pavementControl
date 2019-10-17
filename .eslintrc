@@ -1,0 +1,26 @@
+{
+  "extends": ["taro"],
+  "rules": {
+    "no-unused-vars": ["error", { "varsIgnorePattern": "Taro" }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+    "comma-dangle": [2, "never"],
+    "no-console": 0,
+    "key-spacing": [0, {
+      "beforeColon": true,
+      "afterColon": true,
+      "align": "colon"
+    }],
+    "eol-last": 0,
+    "no-underscore-dangle": ["error", {
+      "allowAfterSuper": true,
+      "allowAfterThis": true
+    }],
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
+    "global-require": ["off"],
+    "no-param-reassign": [2, {
+      "props": false
+    }]
+  },
+  "parser": "babel-eslint"
+}
