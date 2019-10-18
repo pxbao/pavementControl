@@ -26,16 +26,17 @@ const login = (phone,password) => async(dispatch) =>{
       url:FETCH_URL_MAP.getTokenUser,
       method:'POST',
       data:{
-        phone,
-        password
+        loginId:phone,
+        source:'djgk-app',
+        version:'V1.0'
       }
     })
-    const {id,mobile,token} = ret.user || {};
+    const {userId,token} = ret.data || {};
     
     setAuth(token)
 
     dispatch(getLoginInfoAction({
-      id,mobile,token
+      userId,phone,token
     }))
 
     return true

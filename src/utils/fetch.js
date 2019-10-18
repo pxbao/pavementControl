@@ -32,7 +32,7 @@ const fetch = (options) => new Promise((resolve, reject) => {
     data,
     method: method || 'GET',
     header: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest',
       token: getAuth() || ''
     }
@@ -40,7 +40,7 @@ const fetch = (options) => new Promise((resolve, reject) => {
   .then((res) => {
     console.log('fetch res', res);
     switch (res.data.code) {
-      case 200: {
+      case '200': {
         resolve(res.data);
         break;
       }
