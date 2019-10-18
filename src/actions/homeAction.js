@@ -18,3 +18,7 @@ const getHomeData = () => async(dispatch) => {
   });
   return true;
 }
+export {
+  HOME_ACTION_MAP,
+  getHomeData
+}

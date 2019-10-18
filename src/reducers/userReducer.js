@@ -1,6 +1,5 @@
 import { createReducer, updateObject } from '../utils/reducer'
 import { USER_ACTION_MAP } from '../actions/userAction'
-import { userInfo } from 'os'
 
 const getLoginInfoReducer = (state, { loginInfo }) => updateObject(state, {
   loginInfo
