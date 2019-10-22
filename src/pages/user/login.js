@@ -2,9 +2,8 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { connect } from '@tarojs/redux'
 import PropTypes from 'prop-types'
 import { View, Text } from '@tarojs/components'
-import { AtInput } from 'taro-ui'
 import { ButtonItem, InputItem } from '@components'
-import './login.css'
+import './login.scss'
 
 //conf
 import { ROUTE_MAP } from '../../constants/routeConf'
@@ -31,7 +30,7 @@ export default class Login extends Component {
         dispatchLogin: PropTypes.func.isRequired
     }
     config = {
-        navigationBarTitleText: '',
+        navigationBarTitleText: '登陆',
         navigationBarTextStyle: 'white',
         navigationBarBackgroundColor: '#2173EF'
     }
@@ -45,10 +44,10 @@ export default class Login extends Component {
     }
 
     validateLogin() {
-        const { phoneNumber } = this.state;
+        const { phoneNumber,password } = this.state;
         let ret = '';
-        if (!phoneNumber) {
-            ret = '请输入手机号!';
+        if (!phoneNumber||!password) {
+            ret = '请输入手机号或者密码!';
         }
         if (ret) {
             Toast.showToast(ret);
@@ -57,7 +56,7 @@ export default class Login extends Component {
         return true;
     }
 
-    handleLogin = async () => {
+    handleLogin =()=> async () => {
         if (!this.validateLogin()) {
             return;
         }
@@ -72,9 +71,9 @@ export default class Login extends Component {
             if (this.$router.params.isBackToLastPage === 'YES') {
                 Taro.navigateBack();
             } else {
-                // Taro.redirectTo({
-                //     url: ROUTE_MAP.login
-                // });
+                Taro.redirectTo({
+                    url: ROUTE_MAP.home
+                });
             }
         } catch (e) {
             console.warn(e);
@@ -119,7 +118,6 @@ export default class Login extends Component {
         return (
             <View className='logo-icon-content'>
                 <Image src={logoImage} className='logo-icon' />
-                <Text className='login-title'>路面管控</Text>
             </View>
 
         );
@@ -188,7 +186,7 @@ export default class Login extends Component {
                     <ButtonItem
                         text='登录'
                         loading={loading}
-                        onClick={this.handleLogin}
+                        onClick={this.handleLogin()}
                         compStyle={{
                             background: '#70A5F5',
                             borderRadius: Taro.pxTransform(4)

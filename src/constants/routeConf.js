@@ -1,5 +1,6 @@
 const ROUTE_MAP = {
-    login: '/pages/user/login'
+    login: '/pages/user/login',
+    home:'/pages/home/home'
 };
 
 export {
