@@ -19,6 +19,9 @@ import { getHomeDataSelector } from '../../selectors/homeSelector'
 import Toast from '../../utils/Toast'
 import Loading from '../../utils/Loading'
 
+
+const totalOutputImg = require('../../assets/img/tab_total_output.png'); // eslint-disable-line
+
 const mapStateToProps = state => ({
   loginInfo: getLoginInfoSelector(state),
   homeData: getHomeDataSelector(state),
@@ -84,22 +87,33 @@ export default class Home extends Component {
       </View>
     );
   }
-  handleClick (stateName, value) {
+  handleClick(stateName, value) {
     this.setState({
       [stateName]: value
     })
   }
+  renderTabContent(index) {
+    return (
+      <View className='tab-content-info-wrapper'>
+        <View className='tab-content-info-content'>
+          <Text className='tab-content-info-name'>113011.23</Text>
+          <Text className='tab-content-info-title'>总产量(吨)</Text>
+        </View>
+        <Image className='tab-content-info-imgage' src={totalOutputImg}></Image>
+      </View>
+    )
+  }
   renderTabs() {
-    const {current} = this.state
+    const { current } = this.state
     const tabList = [{ title: '沥青系统' }, { title: '水稳系统' }]
     return (
       <View className='tabs-wrappper'>
         <AtTabs current={current} tabList={tabList} onClick={this.handleClick.bind(this, 'current')}>
           <AtTabsPane current={current} index={0}>
-            <View className='tab-content'>标签页一的内容</View>
+            <View className='tab-content'>{this.renderTabContent(1)}</View>
           </AtTabsPane>
           <AtTabsPane current={current} index={1}>
-            <View className='tab-content'>标签页二的内容</View>
+            <View className='tab-content'>{this.renderTabContent(2)}</View>
           </AtTabsPane>
         </AtTabs>
       </View>

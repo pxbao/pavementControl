@@ -14,7 +14,7 @@ const sassImporter = function(url) {
   }
 }
 const config = {
-    projectName: 'AMIR-WX',
+    projectName: 'pavementControl',
     date: '2019-7-23',
     designWidth: 750,
     deviceRatio: {
