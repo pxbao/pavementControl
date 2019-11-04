@@ -2,7 +2,8 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { connect } from '@tarojs/redux'
 import PropTypes from 'prop-types';
 import { View, Text, Picker } from '@tarojs/components'
-import { AtTabs, AtTabsPane } from 'taro-ui'
+import { AtTabs, AtTabsPane, AtGrid,AtFab } from 'taro-ui'
+import Menu from './menu'
 import './home.scss'
 
 //conf
@@ -21,6 +22,9 @@ import Loading from '../../utils/Loading'
 
 
 const totalOutputImg = require('../../assets/img/tab_total_output.png'); // eslint-disable-line
+const yujinglv = require('../../assets/img/img_tabs_yujinglv.png'); // eslint-disable-line
+const yujingpanshu = require('../../assets/img/img_tabs_yujingpanshu.png'); // eslint-disable-line
+const zongpanshu = require('../../assets/img/img_tabs_zongpanshu.png'); // eslint-disable-line
 
 const mapStateToProps = state => ({
   loginInfo: getLoginInfoSelector(state),
@@ -39,6 +43,45 @@ export default class Home extends Component {
     navigationBarTextStyle: 'white',
     navigationBarBackgroundColor: '#2BB4FD'
   }
+
+  constructor() {
+    super(...arguments)
+    this.state = {
+      data: [
+        {
+          image:require('../../assets/gid/img_grid_shengchanguanli.png'),
+          value: '生产管理'
+        },
+        {
+          image:require('../../assets/gid/img_grid_yunshuguanli.png'),
+          value: '运输管理'
+        },
+        {
+          image:require('../../assets/gid/img_grid_shigongguanli.png'),
+          value: '施工管理'
+        },
+        {
+          image:require('../../assets/gid/img_grid_yujingguanli.png'),
+          value: '预警管理'
+        },
+        {
+          image:require('../../assets/gid/img_grid_tongjifenxi.png'),
+          value: '统计分析'
+        },
+        {
+          image:require('../../assets/gid/img_grid_ribao.png'),
+          value: '施工日报'
+        }
+      ],
+      projectSelectorValues: [0, 0],
+      current: 0
+    }
+  }
+
+  handleGridClick = (value, index) => {
+    console.log(value, index)
+  }
+
   static propTypes = {
     dispatchGetHomeData: PropTypes.func.isRequired
   };
@@ -47,10 +90,6 @@ export default class Home extends Component {
     homeData: null
   };
 
-  state = {
-    projectSelectorValues: [0, 0],
-    current: 0
-  }
 
   fetchData = () => {
     const { dispatchGetHomeData } = this.props;
@@ -94,12 +133,40 @@ export default class Home extends Component {
   }
   renderTabContent(index) {
     return (
-      <View className='tab-content-info-wrapper'>
-        <View className='tab-content-info-content'>
-          <Text className='tab-content-info-name'>113011.23</Text>
-          <Text className='tab-content-info-title'>总产量(吨)</Text>
+      <View className='tab-content-info'>
+        <View className='tab-content-info-wrapper'>
+          <View className='tab-content-info-content'>
+            <Text className='tab-content-info-name'>113011.23</Text>
+            <Text className='tab-content-info-title'>总产量(吨)</Text>
+          </View>
+          <Image className='tab-content-info-imgage' src={totalOutputImg}></Image>
         </View>
-        <Image className='tab-content-info-imgage' src={totalOutputImg}></Image>
+        <View className='tab-content-info-between'>
+          <View className='tab-content-info-between-wrapper_1'>
+            <View className='tab-content-info-content'>
+              <Text className='tab-content-info-between-name'>113011.23</Text>
+              <Text className='tab-content-info-between-title'>总盘数</Text>
+            </View>
+            <Image className='tab-content-info-between-imgage' src={zongpanshu}></Image>
+          </View>
+          <View className='tab-content-info-between-wrapper_2'>
+            <View className='tab-content-info-content'>
+              <Text className='tab-content-info-between-name'>113011.23</Text>
+              <Text className='tab-content-info-between-title'>预警盘数</Text>
+            </View>
+            <Image className='tab-content-info-between-imgage' src={yujingpanshu}></Image>
+          </View>
+          <View className='tab-content-info-between-wrapper_3'>
+            <View className='tab-content-info-content'>
+              <Text className='tab-content-info-between-name'>11.23%</Text>
+              <Text className='tab-content-info-between-title'>预警率</Text>
+            </View>
+            <Image className='tab-content-info-between-imgage' src={yujinglv}></Image>
+          </View>
+        </View>
+        <View className='tabs-grid-item'>
+        <Menu />
+        </View>
       </View>
     )
   }
@@ -124,6 +191,14 @@ export default class Home extends Component {
       <View className='home-wrapper '>
         {this.renderProjectSelect()}
         {this.renderTabs()}
+        <View className='btn-fab'>
+          <AtFab >
+            <Text >警</Text>
+          </AtFab>
+        </View>
+        <View className='btn-warm-fab'>
+        <Text className='btn-warm-num'>99+</Text>
+        </View>
       </View>
     )
   }

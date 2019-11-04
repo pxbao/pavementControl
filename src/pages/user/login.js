@@ -11,7 +11,7 @@ import { ROUTE_MAP } from '../../constants/routeConf'
 //action
 import { login } from '../../actions/userAction'
 
-//utiils
+//utiils 
 import Toast from '../../utils/Toast'
 import Loading from '../../utils/Loading'
 
@@ -25,7 +25,7 @@ let logoPassword = require('../../assets/img/login_password_blue.png')
 
 @connect(mapStateToProps, mapDispatchToProps)
 
-export default class Login extends Component {
+export default class Login extends Component { 
     static propTypes = {
         dispatchLogin: PropTypes.func.isRequired
     }
