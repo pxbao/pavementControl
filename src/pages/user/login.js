@@ -1,3 +1,4 @@
+//登陆页
 import Taro, { Component, Config } from '@tarojs/taro'
 import { connect } from '@tarojs/redux'
 import PropTypes from 'prop-types'
@@ -31,7 +32,6 @@ export default class Login extends Component {
     }
     config = {
         navigationBarTitleText: '登陆',
-        navigationBarTextStyle: 'white',
         navigationBarBackgroundColor: '#2173EF'
     }
 

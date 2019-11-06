@@ -54,8 +54,6 @@
   height: 100%;
 }
 .tab-content {
-  font-size: 30px;
-  min-height:1000rpx; 
   display: flex;
   flex-direction: column;
 }
@@ -172,4 +170,8 @@
   color: red;
   font-size: 28px;
   text-align: right;
+}
+.img-warn{
+  width: 60px;
+  height: 60px;
 }

@@ -3,10 +3,13 @@ import { View, Text, Image } from '@tarojs/components'
 import jump from '../../../utils/jump'
 import classNames from 'classnames'
 import './index.scss'
+//conf
+import { ROUTE_MAP } from '../../../constants/routeConf'
 
 const MENU_LIST = [{
-  key: 'order',
+  key: 'production',
   text: '生产管理',
+  url:ROUTE_MAP.production,
   img: require('./assets/img_grid_shengchanguanli.png')
 }, {
   key: 'pin',
@@ -34,11 +37,11 @@ const COUNT_LINE = 3
 export default class Menu extends Component {
   handleClick = (menu) => {
     // NOTE 时间关系，此处只实现帮助中心，用于演示多端 webview
-    if (menu.key === 'help') {
+    if (menu.key === 'production') {
       jump({ url: menu.url, title: menu.text })
     } else {
       Taro.showToast({
-        title: '目前只实现了帮助中心~',
+        title: '目前暂未实现~',
         icon: 'none'
       })
     }

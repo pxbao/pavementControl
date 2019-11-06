@@ -1,3 +1,4 @@
+//首页
 import Taro, { Component, Config } from '@tarojs/taro'
 import { connect } from '@tarojs/redux'
 import PropTypes from 'prop-types';
@@ -25,6 +26,7 @@ const totalOutputImg = require('../../assets/img/tab_total_output.png'); // esli
 const yujinglv = require('../../assets/img/img_tabs_yujinglv.png'); // eslint-disable-line
 const yujingpanshu = require('../../assets/img/img_tabs_yujingpanshu.png'); // eslint-disable-line
 const zongpanshu = require('../../assets/img/img_tabs_zongpanshu.png'); // eslint-disable-line
+const warn = require('../../assets/img/img_warn.png'); // eslint-disable-line
 
 const mapStateToProps = state => ({
   loginInfo: getLoginInfoSelector(state),
@@ -40,39 +42,11 @@ const mapDispatchToProps = dispatch => ({
 export default class Home extends Component {
   config = {
     navigationBarTitleText: '路面管控',
-    navigationBarTextStyle: 'white',
-    navigationBarBackgroundColor: '#2BB4FD'
   }
 
   constructor() {
     super(...arguments)
     this.state = {
-      data: [
-        {
-          image:require('../../assets/gid/img_grid_shengchanguanli.png'),
-          value: '生产管理'
-        },
-        {
-          image:require('../../assets/gid/img_grid_yunshuguanli.png'),
-          value: '运输管理'
-        },
-        {
-          image:require('../../assets/gid/img_grid_shigongguanli.png'),
-          value: '施工管理'
-        },
-        {
-          image:require('../../assets/gid/img_grid_yujingguanli.png'),
-          value: '预警管理'
-        },
-        {
-          image:require('../../assets/gid/img_grid_tongjifenxi.png'),
-          value: '统计分析'
-        },
-        {
-          image:require('../../assets/gid/img_grid_ribao.png'),
-          value: '施工日报'
-        }
-      ],
       projectSelectorValues: [0, 0],
       current: 0
     }
@@ -193,7 +167,7 @@ export default class Home extends Component {
         {this.renderTabs()}
         <View className='btn-fab'>
           <AtFab >
-            <Text >警</Text>
+            <Image className='img-warn' src={warn}></Image>
           </AtFab>
         </View>
         <View className='btn-warm-fab'>

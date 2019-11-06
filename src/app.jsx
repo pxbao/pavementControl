@@ -27,13 +27,14 @@ class App extends Component {
   config = {
     pages: [
       'pages/user/login',
-      'pages/home/home'
+      'pages/home/home',
+      'pages/production/production'
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: '路面管控',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'white',
+      navigationBarBackgroundColor: '#2BB4FD'
     }
   }
 
