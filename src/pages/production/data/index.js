@@ -13,6 +13,9 @@ import Toast from '../../../utils/Toast'
 import Loading from '../../../utils/Loading'
 import './index.scss'
 
+
+const down = require('../../../assets/img/img_down.png'); // eslint-disable-line
+
 const mapStateToProps = state => ({
   bidSection: getBidSectionSeletor(state),
   productionData: getProductionDataSelector(state),
@@ -92,6 +95,7 @@ export default class Data extends Component {
           <Picker mode='selector' range={bidSection.section} value={bidSectionSelectorValue} onChange={this.handleBidSectionChange}>
             <View className='bidsection-content'>
               <View className='bidsection-content-text'>{bidSection.section[bidSectionSelectorValue]}</View>
+              <Image src={down} className='img-down'/>
             </View>
           </Picker>
         </View>
