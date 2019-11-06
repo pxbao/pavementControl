@@ -53,17 +53,24 @@ export default class Data extends Component {
     this.fetchData();
   }
   fetchData = () => {
-    const { dispatchGetBidSection } = this.props;
+    const { dispatchGetBidSection, dispatchGetProductionData } = this.props;
     Loading.showMaskLoading();
     dispatchGetBidSection()
       .then(() => {
-        Loading.hideLoading();
+        dispatchGetProductionData()
+          .then(() => {
+            Loading.hideLoading();
+          }).catch((e) => {
+            console.warn(e);
+            Toast.showErrorToast(e);
+          })
       })
       .catch((e) => {
         console.warn(e);
         Loading.hideLoading();
         Toast.showErrorToast(e);
       })
+
   }
   /**
    * 生成数据查询开始日期修改
@@ -71,7 +78,7 @@ export default class Data extends Component {
    */
   handleDateChange = (e, type) => {
     const { dispatchSetDate } = this.props;
-    dispatchSetDate(e,type);
+    dispatchSetDate(e, type);
   };
   //标段选择
   handleBidSectionChange = e => {
@@ -80,8 +87,41 @@ export default class Data extends Component {
     })
   }
 
+
+  renderDataList(time, list) {
+
+
+    return (
+      <View className='data-list-item'>
+        <View className='data-list-item-title-content'>
+          <Text className='data-list-item-title-content-titel-name'>出料时间:</Text>
+          <Text className='data-list-item-title-content-titel-value'>{time}</Text>
+        </View>
+      </View>
+    )
+  }
+  renderCOntent() {
+    const { productionData } = this.props;
+    const { data } = productionData
+    return (
+      <View>{data.map((info, index) => {
+        const {
+          time,
+          list
+        } = info;
+
+        return (
+          <View key={`detail-${index}`}>
+            {this.renderDataList(time, list)}
+          </View>
+        );
+      })}
+
+      </View>
+    )
+  }
   render() {
-    const { bidSection, productionDataDate } = this.props;
+    const { bidSection, productionDataDate, productionData } = this.props;
     const { bidSectionSelectorValue } = this.state
     return (
       <View className='wrapper '>
@@ -95,9 +135,12 @@ export default class Data extends Component {
           <Picker mode='selector' range={bidSection.section} value={bidSectionSelectorValue} onChange={this.handleBidSectionChange}>
             <View className='bidsection-content'>
               <View className='bidsection-content-text'>{bidSection.section[bidSectionSelectorValue]}</View>
-              <Image src={down} className='img-down'/>
+              <Image src={down} className='img-down' />
             </View>
           </Picker>
+        </View>
+        <View className='data-list-wrapper'>
+          {this.renderCOntent()}
         </View>
 
       </View>

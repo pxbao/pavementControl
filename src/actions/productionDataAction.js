@@ -9,6 +9,8 @@ import {gettProductionDataDateSelector} from '../selectors/productionDataSelecto
 
 //标段mock
 import BidSection from '../mock/mockBidSection'
+//生产数据mock
+import ProductionData from '../mock/mockProductionData'
 
 const PRODUCTION_DATA_ACTION_MAP = {
   GET_BIDSECTION:'productionDataAction.getBidSection',
@@ -26,9 +28,9 @@ const getBidSection = () => async(dispatch) =>{
 }
 //获取生产数据信息
 const getProductionData = () => async(dispatch) =>{
-  const productionData={};
+  const productionData=ProductionData;
   dispatch({
-    type:PRODUCTION_ACTION_MAP.GET_PRODUCTION_DATA,
+    type:PRODUCTION_DATA_ACTION_MAP.GET_PRODUCTION_DATA,
     productionData
   })
   return true;
