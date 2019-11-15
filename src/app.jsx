@@ -29,7 +29,10 @@ class App extends Component {
       'pages/user/login',
       'pages/home/home',
       'pages/production/production',
-      'pages/production/productionDateDetails'
+      'pages/production/productionDateDetails',
+      'pages/transport/transportManage',
+      'pages/construction/constructionManage',
+      'pages/warning/warningManage'
     ],
     window: {
       backgroundTextStyle: 'light',

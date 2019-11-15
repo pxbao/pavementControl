@@ -1,0 +1,118 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.bidsection-wrapper {
+  background-color: #FFFFFF;
+  margin: 30px 40px 15px 40px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  border: 1px solid #CCCCCC;
+}
+
+.bidsection-content {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.bidsection-content-text {
+  font-size: 26px;
+  color: #666666;
+}
+
+.img-down {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+}
+.content-wrapper{
+  width: 100%;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0px;
+}
+.content-title-wrapper{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  color: #C8CCD1;
+}
+.content-title-item-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
+}
+.content-title-item-name{
+  margin-top: 10px;
+  font-size: 24px;
+  color: #666666;
+  text-align: center;
+}
+.content-title-item-yellow{
+  font-size: 38px;
+  color: #FEBC5B;
+  text-align: center;
+}
+.content-title-item-orange{
+  font-size: 38px;
+  color: #FE875A;
+  text-align: center;
+}
+.content-title-item-red{
+  font-size: 38px;
+  color: #FF4141;
+  text-align: center;
+}
+
+.list-wrapper{
+  display: flex;
+  flex-direction: column;
+  padding: 0px 15px;
+}
+.data-list-item-content-wrapper {
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 15px 0px;
+}
+.data-list-item-content-item-all {
+  margin-bottom: 20rpx;
+  width: 100%;
+}
+.data-list-item-content-item-half {
+  margin-bottom: 20rpx;
+  width: 50%;
+}
+.data-list-item-content-name {
+  text-align: center;
+  font-size: 24px;
+  color: #999999;
+}
+.data-list-item-content-value {
+  margin-left: 12px;
+  text-align: center;
+  font-size: 28px;
+  color: #666666;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #EEEEEE;
+}

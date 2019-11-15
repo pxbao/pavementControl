@@ -12,23 +12,26 @@ const MENU_LIST = [{
   url:ROUTE_MAP.production,
   img: require('./assets/img_grid_shengchanguanli.png')
 }, {
-  key: 'pin',
+  key: 'transportManage',
   text: '运输管理',
+  url:ROUTE_MAP.transportManage,
   img: require('./assets/img_grid_yunshuguanli.png')
 }, {
-  key: 'bargain',
+  key: 'constructionManage',
   text: '施工管理',
+  url:ROUTE_MAP.constructionManage,
   img: require('./assets/img_grid_shigongguanli.png')
 }, {
-  key: 'credit',
+  key: 'warningManage',
   text: '预警管理',
+  url:ROUTE_MAP.warningManage,
   img: require('./assets/img_grid_yujingguanli.png')
 }, {
-  key: 'service',
+  key: '',
   text: '统计分析',
   img: require('./assets/img_grid_tongjifenxi.png')
 }, {
-  key: 'coupon',
+  key: '',
   text: '施工日报',
   img: require('./assets/img_grid_ribao.png')
 }]
@@ -37,7 +40,7 @@ const COUNT_LINE = 3
 export default class Menu extends Component {
   handleClick = (menu) => {
     // NOTE 时间关系，此处只实现帮助中心，用于演示多端 webview
-    if (menu.key === 'production') {
+    if (menu.key.length >0) {
       jump({ url: menu.url, title: menu.text })
     } else {
       Taro.showToast({
