@@ -7,7 +7,8 @@ import { AtTabs, AtTabsPane } from 'taro-ui'
 import './production.scss'
 
 
-import  DataTab  from './data'
+import DataTab from './data'
+import CurveTab from './curve'
 
 //conf
 import { ROUTE_MAP } from '../../constants/routeConf'
@@ -44,14 +45,18 @@ export default class Production extends Component {
         <AtTabs current={current} tabList={tabList} onClick={this.handleClick.bind(this, 'current')}>
           <AtTabsPane current={current} index={0}>
             <View className='tab-content'>
-              <DataTab/>
+              <DataTab />
             </View>
           </AtTabsPane>
           <AtTabsPane current={current} index={1}>
-            <View className='tab-content'>合成级配曲线</View>
+            <View className='tab-content'>
+              <CurveTab />
+            </View>
           </AtTabsPane>
           <AtTabsPane current={current} index={2}>
-            <View className='tab-content'>误差走势图</View>
+            <View className='tab-content'>
+              <CurveTab />
+            </View>
           </AtTabsPane>
         </AtTabs>
       </View>

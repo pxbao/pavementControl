@@ -28,7 +28,8 @@ class App extends Component {
     pages: [
       'pages/user/login',
       'pages/home/home',
-      'pages/production/production'
+      'pages/production/production',
+      'pages/production/productionDateDetails'
     ],
     window: {
       backgroundTextStyle: 'light',

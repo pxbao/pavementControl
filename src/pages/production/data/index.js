@@ -1,17 +1,19 @@
 //生产数据
+import _ from 'lodash';
 import Taro, { Component, Config } from '@tarojs/taro'
 import { connect } from '@tarojs/redux'
 import PropTypes from 'prop-types'
 import { DataTimeSelect } from '@components'
 import { View, Text } from '@tarojs/components'
 //selector
-import { getBidSectionSeletor, getProductionDataSelector, gettProductionDataDateSelector } from '../../../selectors/productionDataSelector'
+import { getBidSectionSeletor, getProductionDataSelector, getProductionDataDateSelector } from '../../../selectors/productionDataSelector'
 //action
-import { getBidSection, getProductionData, setProductionDataDateAction, setDateStart } from '../../../actions/productionDataAction'
+import { getBidSection, getProductionData,  setDate } from '../../../actions/productionDataAction'
 //utiils
 import Toast from '../../../utils/Toast'
 import Loading from '../../../utils/Loading'
 import './index.scss'
+import {ROUTE_MAP} from '../../../constants/routeConf'
 
 
 const down = require('../../../assets/img/img_down.png'); // eslint-disable-line
@@ -19,13 +21,13 @@ const down = require('../../../assets/img/img_down.png'); // eslint-disable-line
 const mapStateToProps = state => ({
   bidSection: getBidSectionSeletor(state),
   productionData: getProductionDataSelector(state),
-  productionDataDate: gettProductionDataDateSelector(state)
+  productionDataDate: getProductionDataDateSelector(state)
 })
 
 const mapDispatchToProps = dispatch => ({
   dispatchGetBidSection: () => dispatch(getBidSection()),
   dispatchGetProductionData: () => dispatch(getProductionData()),
-  dispatchSetDate: (...args) => dispatch(setDateStart(...args))
+  dispatchSetDate: (...args) => dispatch(setDate(...args))
 })
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Data extends Component {
@@ -89,20 +91,41 @@ export default class Data extends Component {
 
 
   renderDataList(time, list) {
-
-
     return (
-      <View className='data-list-item'>
+      <View className='data-list-item' onClick={()=>this.onClickJumpToProductionDataDetail()}>
         <View className='data-list-item-title-content'>
           <Text className='data-list-item-title-content-titel-name'>出料时间:</Text>
           <Text className='data-list-item-title-content-titel-value'>{time}</Text>
         </View>
+        <View className='line'/>
+        <View className='data-list-item-content-wrapper'>
+            {
+              list.map((datail,index) =>{
+                const {id,name,value} = datail
+                return (
+                  <View key = {`${id}_${index}`} className ='data-list-item-content-item'>
+                    <Text className='data-list-item-content-name '>{name}:</Text>
+                    <Text className = 'data-list-item-content-value'>{value}</Text>
+                  </View>
+                )
+              })
+            }
+        </View>
       </View>
     )
   }
-  renderCOntent() {
+  
+  onClickJumpToProductionDataDetail(){
+    Taro.navigateTo({
+      url: ROUTE_MAP.productionDataDetails
+    });
+  }
+  renderContent() {
     const { productionData } = this.props;
     const { data } = productionData
+    if (!data || !_.isArray(data)) {
+      return '';
+    }
     return (
       <View>{data.map((info, index) => {
         const {
@@ -111,7 +134,7 @@ export default class Data extends Component {
         } = info;
 
         return (
-          <View key={`detail-${index}`}>
+          <View key={`detail-${index}`} >
             {this.renderDataList(time, list)}
           </View>
         );
@@ -140,7 +163,7 @@ export default class Data extends Component {
           </Picker>
         </View>
         <View className='data-list-wrapper'>
-          {this.renderCOntent()}
+          {this.renderContent()}
         </View>
 
       </View>

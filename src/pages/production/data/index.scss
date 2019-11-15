@@ -1,16 +1,18 @@
-.wrapper{
+.wrapper {
   display: flex;
   flex-direction: column;
 }
-.bidsection-wrapper{
+
+.bidsection-wrapper {
   background-color: #FFFFFF;
-  margin: 30px 40px;
+  margin: 30px 40px 15px 40px;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   border-radius: 12px;
   border: 1px solid #CCCCCC;
 }
-.bidsection-content{
+
+.bidsection-content {
   width: 100%;
   height: 80px;
   display: flex;
@@ -18,39 +20,86 @@
   text-align: center;
   justify-content: center;
 }
-.bidsection-content-text{
+
+.bidsection-content-text {
   font-size: 26px;
   color: #666666;
 }
-.img-down{
+
+.img-down {
   width: 20px;
   height: 20px;
   margin-left: 20px;
 }
-.data-list-wrapper{
+
+.data-list-wrapper {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
 }
-.data-list-item{
+
+.data-list-item {
   display: flex;
   flex-direction: column;
   margin: 10px 20px;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  border-radius: 12px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
   background-color: #FFFFFF;
 }
-.data-list-item-title-content{
-  padding: 8px;
+
+.data-list-item-title-content {
+  padding: 16px 24px;
 }
-.data-list-item-title-content-titel-name{
+
+.data-list-item-title-content-titel-name {
+  text-align: center;
+  font-size: 30px;
+  color: #666666;
+}
+
+.data-list-item-title-content-titel-value {
+  margin-left: 16px;
+  text-align: center;
+  font-size: 22px;
+  color: #666666;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #EEEEEE;
+}
+
+.data-list-item-content-wrapper {
+  padding: 8px 24px;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.data-list-item-content-item {
+  margin-bottom: 40rpx;
+  width: 33%;
+}
+.data-list-item-content-name {
   text-align: center;
   font-size: 24px;
-  color: #666666;
+  color: #999999;
 }
-.data-list-item-title-content-titel-value{
+.data-list-item-content-value {
+  margin-left: 12px;
   text-align: center;
-  font-size: 20px;
+  font-size: 28px;
   color: #666666;
 }
+
